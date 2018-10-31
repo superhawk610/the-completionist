@@ -4,7 +4,7 @@ type action =
   | Increment
   | Decrement;
 
-let component = ReasonReact.reducerComponent("Stateful");
+let component = __MODULE__ |> ReasonReact.reducerComponent;
 
 let make = _children => {
   ...component,
@@ -16,10 +16,26 @@ let make = _children => {
     },
   render: self =>
     <div>
-      <Button text="-" onClick=(_event => self.send(Decrement)) />
-      <div className="foo">
-        (ReasonReact.string(string_of_int(self.state.count) ++ "bar"))
+      <Button
+        theme=Bulma.Danger
+        text="-"
+        onClick={_event => self.send(Decrement)}
+      />
+      <div
+        className="foo"
+        style={
+          ReactDOMRe.Style.make(
+            ~display="inline-block",
+            ~margin="5px 10px 5px 0",
+            (),
+          )
+        }>
+        {ReasonReact.string(string_of_int(self.state.count))}
       </div>
-      <Button text="+" onClick=(_event => self.send(Increment)) />
+      <Button
+        theme=Bulma.Success
+        text="+"
+        onClick={_event => self.send(Increment)}
+      />
     </div>,
 };

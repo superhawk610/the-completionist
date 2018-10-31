@@ -1,7 +1,15 @@
-let component = ReasonReact.statelessComponent("Button");
+%bs.raw
+{|import './Button.styl'|};
 
-let make = (~text, ~onClick, _children) => {
+let component = __MODULE__ |> ReasonReact.statelessComponent;
+
+let make = (~text, ~onClick, ~theme=Bulma.Dark, ~block=false, _children) => {
   ...component,
-  render: _self =>
-    <button onClick className="button"> (ReasonReact.string(text)) </button>,
+  render: _self => {
+    let theme = Bulma.string_of_theme(theme);
+    let width = block ? " is-fullwidth" : "";
+    <button onClick className={"Button button " ++ theme ++ width}>
+      {ReasonReact.string(text)}
+    </button>;
+  },
 };

@@ -1,6 +1,6 @@
 {
   "flow.enabled": false,
   "files.exclude": {
-    "**/*.bs.js": false
+    "**/*.bs.js": true
   }
 }

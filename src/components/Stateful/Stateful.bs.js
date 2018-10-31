@@ -7,7 +7,7 @@ var React = require("react");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Button$ReactTemplate = require("../Button/Button.bs.js");
 
-var component = ReasonReact.reducerComponent("Stateful");
+var component = ReasonReact.reducerComponent("Stateful-ReactTemplate");
 
 function make(_children) {
   return /* record */[
@@ -23,11 +23,15 @@ function make(_children) {
           /* render */(function (self) {
               return React.createElement("div", undefined, ReasonReact.element(undefined, undefined, Button$ReactTemplate.make("-", (function (_event) {
                                     return Curry._1(self[/* send */3], /* Decrement */1);
-                                  }), /* array */[])), React.createElement("div", {
-                              className: "foo"
-                            }, String(self[/* state */1][/* count */0]) + "bar"), ReasonReact.element(undefined, undefined, Button$ReactTemplate.make("+", (function (_event) {
+                                  }), /* Danger */10, undefined, /* array */[])), React.createElement("div", {
+                              className: "foo",
+                              style: {
+                                display: "inline-block",
+                                margin: "5px 10px 5px 0"
+                              }
+                            }, String(self[/* state */1][/* count */0])), ReasonReact.element(undefined, undefined, Button$ReactTemplate.make("+", (function (_event) {
                                     return Curry._1(self[/* send */3], /* Increment */0);
-                                  }), /* array */[])));
+                                  }), /* Success */8, undefined, /* array */[])));
             }),
           /* initialState */(function (param) {
               return /* record */[/* count */0];
