@@ -18,7 +18,7 @@ let make = _children => {
     <div>
       <Button text="-" onClick=(_event => self.send(Decrement)) />
       <div className="foo">
-        (ReasonReact.string(string_of_int(self.state.count) ++ "foo"))
+        (ReasonReact.string(string_of_int(self.state.count) ++ "bar"))
       </div>
       <Button text="+" onClick=(_event => self.send(Increment)) />
     </div>,

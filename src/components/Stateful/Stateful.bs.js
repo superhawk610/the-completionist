@@ -25,7 +25,7 @@ function make(_children) {
                                     return Curry._1(self[/* send */3], /* Decrement */1);
                                   }), /* array */[])), React.createElement("div", {
                               className: "foo"
-                            }, String(self[/* state */1][/* count */0]) + "foo"), ReasonReact.element(undefined, undefined, Button$ReactTemplate.make("+", (function (_event) {
+                            }, String(self[/* state */1][/* count */0]) + "bar"), ReasonReact.element(undefined, undefined, Button$ReactTemplate.make("+", (function (_event) {
                                     return Curry._1(self[/* send */3], /* Increment */0);
                                   }), /* array */[])));
             }),
