@@ -3,12 +3,10 @@
 
 var React = require("react");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
-var Greeting$ReactTemplate = require("../Greeting/Greeting.bs.js");
-var Stateful$ReactTemplate = require("../Stateful/Stateful.bs.js");
 
-var component = ReasonReact.statelessComponent("App");
+var component = ReasonReact.statelessComponent("Button");
 
-function make(_children) {
+function make(text, onClick, _children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -20,7 +18,10 @@ function make(_children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (_self) {
-              return React.createElement("div", undefined, ReasonReact.element(undefined, undefined, Greeting$ReactTemplate.make("Aaron", /* array */[])), ReasonReact.element(undefined, undefined, Stateful$ReactTemplate.make(/* array */[])));
+              return React.createElement("button", {
+                          className: "button",
+                          onClick: onClick
+                        }, text);
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],

@@ -5,10 +5,11 @@ var Block = require("bs-platform/lib/js/block.js");
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
+var Button$ReactTemplate = require("../Button/Button.bs.js");
 
 var component = ReasonReact.reducerComponent("Stateful");
 
-function make(greeting, _children) {
+function make(_children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -20,47 +21,23 @@ function make(greeting, _children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (self) {
-              "You've clicked this " + (String(self[/* state */1][/* count */0]) + " times(s)");
-              var match = self[/* state */1][/* show */1];
-              return React.createElement("div", undefined, React.createElement("button", {
-                              onClick: (function (_event) {
-                                  return Curry._1(self[/* send */3], /* Increment */0);
-                                })
-                            }, "-"), React.createElement("button", {
-                              onClick: (function (_event) {
-                                  return Curry._1(self[/* send */3], /* Decrement */1);
-                                })
-                            }, "+"), React.createElement("button", {
-                              onClick: (function (_event) {
-                                  return Curry._1(self[/* send */3], /* Toggle */2);
-                                })
-                            }, "Toggle greeting"), match ? greeting : null);
+              return React.createElement("div", undefined, ReasonReact.element(undefined, undefined, Button$ReactTemplate.make("-", (function (_event) {
+                                    return Curry._1(self[/* send */3], /* Decrement */1);
+                                  }), /* array */[])), React.createElement("div", {
+                              className: "foo"
+                            }, String(self[/* state */1][/* count */0]) + "foo"), ReasonReact.element(undefined, undefined, Button$ReactTemplate.make("+", (function (_event) {
+                                    return Curry._1(self[/* send */3], /* Increment */0);
+                                  }), /* array */[])));
             }),
           /* initialState */(function (param) {
-              return /* record */[
-                      /* count */0,
-                      /* show */true
-                    ];
+              return /* record */[/* count */0];
             }),
           /* retainedProps */component[/* retainedProps */11],
           /* reducer */(function (action, state) {
-              switch (action) {
-                case 0 : 
-                    return /* Update */Block.__(0, [/* record */[
-                                /* count */state[/* count */0] + 1 | 0,
-                                /* show */state[/* show */1]
-                              ]]);
-                case 1 : 
-                    return /* Update */Block.__(0, [/* record */[
-                                /* count */state[/* count */0] - 1 | 0,
-                                /* show */state[/* show */1]
-                              ]]);
-                case 2 : 
-                    return /* Update */Block.__(0, [/* record */[
-                                /* count */state[/* count */0],
-                                /* show */!state[/* show */1]
-                              ]]);
-                
+              if (action) {
+                return /* Update */Block.__(0, [/* record */[/* count */state[/* count */0] - 1 | 0]]);
+              } else {
+                return /* Update */Block.__(0, [/* record */[/* count */state[/* count */0] + 1 | 0]]);
               }
             }),
           /* jsElementWrapped */component[/* jsElementWrapped */13]

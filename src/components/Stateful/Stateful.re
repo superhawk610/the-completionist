@@ -1,41 +1,25 @@
-type state = {
-  count: int,
-  show: bool,
-};
+type state = {count: int};
 
 type action =
   | Increment
-  | Decrement
-  | Toggle;
+  | Decrement;
 
 let component = ReasonReact.reducerComponent("Stateful");
 
-let make = (~greeting, _children) => {
+let make = _children => {
   ...component,
-  initialState: () => {count: 0, show: true},
+  initialState: () => {count: 0},
   reducer: (action, state) =>
     switch (action) {
-    | Increment => ReasonReact.Update({...state, count: state.count + 1})
-    | Decrement => ReasonReact.Update({...state, count: state.count - 1})
-    | Toggle => ReasonReact.Update({...state, show: !state.show})
+    | Increment => ReasonReact.Update({count: state.count + 1})
+    | Decrement => ReasonReact.Update({count: state.count - 1})
     },
-  render: self => {
-    let message = "You've clicked this " ++ string_of_int(self.state.count) ++ " times(s)";
+  render: self =>
     <div>
-      <button onClick=(_event => self.send(Increment))>
-        (ReasonReact.string("-"))
-      </button>
-      <button onClick=(_event => self.send(Decrement))>
-        (ReasonReact.string("+"))
-      </button>
-      <button onClick=(_event => self.send(Toggle))>
-        (ReasonReact.string("Toggle greeting"))
-      </button>
-      (
-        self.state.show
-        ? ReasonReact.string(greeting)
-        : ReasonReact.null
-      )
-    </div>;
-  },
+      <Button text="-" onClick=(_event => self.send(Decrement)) />
+      <div className="foo">
+        (ReasonReact.string(string_of_int(self.state.count) ++ "foo"))
+      </div>
+      <Button text="+" onClick=(_event => self.send(Increment)) />
+    </div>,
 };
