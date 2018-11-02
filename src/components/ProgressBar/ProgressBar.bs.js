@@ -2,14 +2,14 @@
 'use strict';
 
 var React = require("react");
-var ReactDOMRe = require("reason-react/src/ReactDOMRe.js");
-var Belt_Option = require("bs-platform/lib/js/belt_Option.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
-var Subheading$ReactTemplate = require("../Heading/Subheading.bs.js");
+var Bulma$ReactTemplate = require("../../Bulma.bs.js");
 
-var component = ReasonReact.statelessComponent("Box-ReactTemplate");
+var component = ReasonReact.statelessComponent("ProgressBar-ReactTemplate");
 
-function make(heading, children) {
+function make($staropt$star, value, $staropt$star$1, _children) {
+  var theme = $staropt$star !== undefined ? $staropt$star : /* Link */7;
+  var max = $staropt$star$1 !== undefined ? $staropt$star$1 : 100;
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -21,11 +21,15 @@ function make(heading, children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (_self) {
-              return React.createElement("div", {
-                          className: "box"
-                        }, Belt_Option.getWithDefault(Belt_Option.map(heading, (function (text) {
-                                    return ReasonReact.element(undefined, undefined, Subheading$ReactTemplate.make(/* array */[text]));
-                                  })), null), ReactDOMRe.createElementVariadic("div", undefined, children));
+              var theme$1 = Bulma$ReactTemplate.string_of_theme(theme);
+              var percent = (value / max * 100).toFixed(2) + "%";
+              var value$1 = String(value);
+              var max$1 = String(max);
+              return React.createElement("progress", {
+                          className: "progress " + theme$1,
+                          max: max$1,
+                          value: value$1
+                        }, percent);
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],

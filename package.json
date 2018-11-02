@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "build": "parcel build ./src/index.html",
-    "dev": "parcel ./src/index.html ./src/*.re"
+    "dev": "parcel ./src/index.html"
   },
   "author": "Aaron Ross <superhawk610@gmail.com>",
   "license": "MIT",

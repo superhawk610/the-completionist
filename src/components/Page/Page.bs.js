@@ -2,14 +2,15 @@
 'use strict';
 
 var React = require("react");
-var ReactDOMRe = require("reason-react/src/ReactDOMRe.js");
 var Belt_Option = require("bs-platform/lib/js/belt_Option.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
+var Heading$ReactTemplate = require("../Heading/Heading.bs.js");
+var Fragment$ReactTemplate = require("../Fragment/Fragment.bs.js");
 var Subheading$ReactTemplate = require("../Heading/Subheading.bs.js");
 
-var component = ReasonReact.statelessComponent("Box-ReactTemplate");
+var component = ReasonReact.statelessComponent("Page-ReactTemplate");
 
-function make(heading, children) {
+function make(heading, subheading, children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -20,12 +21,12 @@ function make(heading, children) {
           /* willUnmount */component[/* willUnmount */6],
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
-          /* render */(function (_self) {
+          /* render */(function (_state) {
               return React.createElement("div", {
-                          className: "box"
-                        }, Belt_Option.getWithDefault(Belt_Option.map(heading, (function (text) {
+                          className: "Page"
+                        }, ReasonReact.element(undefined, undefined, Heading$ReactTemplate.make(/* array */[heading])), Belt_Option.getWithDefault(Belt_Option.map(subheading, (function (text) {
                                     return ReasonReact.element(undefined, undefined, Subheading$ReactTemplate.make(/* array */[text]));
-                                  })), null), ReactDOMRe.createElementVariadic("div", undefined, children));
+                                  })), null), ReasonReact.element(undefined, undefined, Fragment$ReactTemplate.make(children)));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],

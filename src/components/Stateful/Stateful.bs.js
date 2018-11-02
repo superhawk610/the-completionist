@@ -23,7 +23,7 @@ function make(_children) {
           /* render */(function (self) {
               return React.createElement("div", undefined, ReasonReact.element(undefined, undefined, Button$ReactTemplate.make("-", (function (_event) {
                                     return Curry._1(self[/* send */3], /* Decrement */1);
-                                  }), /* Danger */10, undefined, /* array */[])), React.createElement("div", {
+                                  }), /* Danger */11, undefined, /* array */[])), React.createElement("div", {
                               className: "foo",
                               style: {
                                 display: "inline-block",
@@ -31,7 +31,7 @@ function make(_children) {
                               }
                             }, String(self[/* state */1][/* count */0])), ReasonReact.element(undefined, undefined, Button$ReactTemplate.make("+", (function (_event) {
                                     return Curry._1(self[/* send */3], /* Increment */0);
-                                  }), /* Success */8, undefined, /* array */[])));
+                                  }), /* Success */9, undefined, /* array */[])));
             }),
           /* initialState */(function (param) {
               return /* record */[/* count */0];

@@ -1,4 +1,5 @@
 type theme =
+  | None
   | White
   | Light
   | Dark
@@ -13,6 +14,7 @@ type theme =
 
 let string_of_theme = th =>
   switch (th) {
+  | None => ""
   | White => "is-white"
   | Light => "is-light"
   | Dark => "is-dark"

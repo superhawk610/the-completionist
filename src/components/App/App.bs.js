@@ -4,13 +4,10 @@
 var Block = require("bs-platform/lib/js/block.js");
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
+var Caml_format = require("bs-platform/lib/js/caml_format.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
-var Box$ReactTemplate = require("../Box/Box.bs.js");
-var Button$ReactTemplate = require("../Button/Button.bs.js");
-var Spacer$ReactTemplate = require("../Spacer/Spacer.bs.js");
-var Heading$ReactTemplate = require("../Heading/Heading.bs.js");
-var Stateful$ReactTemplate = require("../Stateful/Stateful.bs.js");
-var Subheading$ReactTemplate = require("../Heading/Subheading.bs.js");
+var Detail$ReactTemplate = require("../../routes/Detail/Detail.bs.js");
+var Dashboard$ReactTemplate = require("../../routes/Dashboard/Dashboard.bs.js");
 var Notification$ReactTemplate = require("../Notification/Notification.bs.js");
 
 import { hot } from 'react-hot-loader'
@@ -24,38 +21,78 @@ function make(_children) {
           /* reactClassInternal */component[/* reactClassInternal */1],
           /* handedOffState */component[/* handedOffState */2],
           /* willReceiveProps */component[/* willReceiveProps */3],
-          /* didMount */component[/* didMount */4],
+          /* didMount */(function (self) {
+              console.log("mounted");
+              var watcherId = ReasonReact.Router[/* watchUrl */1]((function (url) {
+                      console.log(url);
+                      var match = url[/* path */0];
+                      if (match) {
+                        switch (match[0]) {
+                          case "dashboard" : 
+                              return Curry._1(self[/* send */3], /* ShowDashboard */0);
+                          case "show" : 
+                              var match$1 = match[1];
+                              if (match$1 && !match$1[1]) {
+                                return Curry._1(self[/* send */3], /* ShowDetail */[Caml_format.caml_int_of_string(match$1[0])]);
+                              } else {
+                                return Curry._1(self[/* send */3], /* ShowDashboard */0);
+                              }
+                          default:
+                            return Curry._1(self[/* send */3], /* ShowDashboard */0);
+                        }
+                      } else {
+                        return Curry._1(self[/* send */3], /* ShowDashboard */0);
+                      }
+                    }));
+              return Curry._1(self[/* onUnmount */4], (function (param) {
+                            return ReasonReact.Router[/* unwatchUrl */2](watcherId);
+                          }));
+            }),
           /* didUpdate */component[/* didUpdate */5],
           /* willUnmount */component[/* willUnmount */6],
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (self) {
-              return React.createElement("div", undefined, ReasonReact.element(undefined, undefined, Heading$ReactTemplate.make(/* array */["Bulma + ReasonReact"])), ReasonReact.element(undefined, undefined, Subheading$ReactTemplate.make(/* array */["Playground"])), ReasonReact.element(undefined, undefined, Spacer$ReactTemplate.make(30, /* array */[])), ReasonReact.element(undefined, undefined, Box$ReactTemplate.make(/* array */[ReasonReact.element(undefined, undefined, Stateful$ReactTemplate.make(/* array */[]))])), ReasonReact.element(undefined, undefined, Box$ReactTemplate.make(/* array */[
-                                  ReasonReact.element(undefined, undefined, Button$ReactTemplate.make("Toggle Message", (function (_event) {
-                                              return Curry._1(self[/* send */3], /* ToggleMessage */0);
-                                            }), /* Info */7, undefined, /* array */[])),
-                                  ReasonReact.element(undefined, undefined, Button$ReactTemplate.make("Toggle Notification", (function (_event) {
-                                              return Curry._1(self[/* send */3], /* ToggleNotification */1);
-                                            }), /* Warning */9, undefined, /* array */[]))
-                                ])), ReasonReact.element(undefined, undefined, Notification$ReactTemplate.make(self[/* state */1][/* showMessage */0], "I'm a notification", "Body", /* Info */7, /* array */[])), ReasonReact.element(undefined, undefined, Notification$ReactTemplate.make(self[/* state */1][/* showNotification */1], undefined, "Body", /* Warning */9, /* array */[])));
+              var match = self[/* state */1][/* nowShowing */2];
+              return React.createElement("div", undefined, match ? ReasonReact.element(undefined, undefined, Detail$ReactTemplate.make(match[0], /* array */[])) : ReasonReact.element(undefined, undefined, Dashboard$ReactTemplate.make(/* array */[])), ReasonReact.element(undefined, undefined, Notification$ReactTemplate.make(self[/* state */1][/* showMessage */0], "I'm a notification", "Body", /* Info */8, /* array */[])), ReasonReact.element(undefined, undefined, Notification$ReactTemplate.make(self[/* state */1][/* showNotification */1], undefined, "Body", /* Warning */10, /* array */[])));
             }),
           /* initialState */(function (param) {
               return /* record */[
                       /* showMessage */false,
-                      /* showNotification */false
+                      /* showNotification */false,
+                      /* nowShowing : Dashboard */0
                     ];
             }),
           /* retainedProps */component[/* retainedProps */11],
           /* reducer */(function (action, state) {
-              if (action) {
-                return /* Update */Block.__(0, [/* record */[
-                            /* showMessage */state[/* showMessage */0],
-                            /* showNotification */!state[/* showNotification */1]
-                          ]]);
+              console.log(action);
+              if (typeof action === "number") {
+                switch (action) {
+                  case 0 : 
+                      return /* Update */Block.__(0, [/* record */[
+                                  /* showMessage */state[/* showMessage */0],
+                                  /* showNotification */state[/* showNotification */1],
+                                  /* nowShowing : Dashboard */0
+                                ]]);
+                  case 1 : 
+                      return /* Update */Block.__(0, [/* record */[
+                                  /* showMessage */!state[/* showMessage */0],
+                                  /* showNotification */state[/* showNotification */1],
+                                  /* nowShowing */state[/* nowShowing */2]
+                                ]]);
+                  case 2 : 
+                      return /* Update */Block.__(0, [/* record */[
+                                  /* showMessage */state[/* showMessage */0],
+                                  /* showNotification */!state[/* showNotification */1],
+                                  /* nowShowing */state[/* nowShowing */2]
+                                ]]);
+                  
+                }
               } else {
                 return /* Update */Block.__(0, [/* record */[
-                            /* showMessage */!state[/* showMessage */0],
-                            /* showNotification */state[/* showNotification */1]
+                            /* showMessage */state[/* showMessage */0],
+                            /* showNotification */state[/* showNotification */1],
+                            /* nowShowing : Detail */[action[0]]
                           ]]);
               }
             }),

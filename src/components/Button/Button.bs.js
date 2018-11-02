@@ -11,7 +11,7 @@ import './Button.styl'
 var component = ReasonReact.statelessComponent("Button-ReactTemplate");
 
 function make(text, onClick, $staropt$star, $staropt$star$1, _children) {
-  var theme = $staropt$star !== undefined ? $staropt$star : /* Dark */2;
+  var theme = $staropt$star !== undefined ? $staropt$star : /* Dark */3;
   var block = $staropt$star$1 !== undefined ? $staropt$star$1 : false;
   return /* record */[
           /* debugName */component[/* debugName */0],

@@ -11,7 +11,7 @@ import './Notification.styl'
 var component = ReasonReact.statelessComponent("Notification-ReactTemplate");
 
 function make(active, heading, message, $staropt$star, _children) {
-  var theme = $staropt$star !== undefined ? $staropt$star : /* Primary */5;
+  var theme = $staropt$star !== undefined ? $staropt$star : /* Primary */6;
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -23,12 +23,10 @@ function make(active, heading, message, $staropt$star, _children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (_self) {
-              console.log(theme);
               var theme$1 = Bulma$ReactTemplate.string_of_theme(theme);
               var style = {
                 opacity: active ? "1" : "0"
               };
-              console.log(active ? "is_active" : "isnt_active");
               if (heading !== undefined) {
                 return React.createElement("div", {
                             className: "Notification Notification__expanded message " + theme$1,

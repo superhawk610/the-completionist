@@ -1,16 +1,17 @@
 let component = __MODULE__ |> ReasonReact.statelessComponent;
 
-let make = (~heading=?, children) => {
+let make = (~heading, ~subheading=?, children) => {
   ...component,
-  render: _self =>
-    <div className="box">
+  render: _state =>
+    <div className="Page">
+      <Heading> heading->ReasonReact.string </Heading>
       {
-        heading
+        subheading
         ->Belt.Option.map(text =>
             <Subheading> text->ReasonReact.string </Subheading>
           )
         ->Belt.Option.getWithDefault(ReasonReact.null)
       }
-      <div> ...children </div>
+      <Fragment> ...children </Fragment>
     </div>,
 };

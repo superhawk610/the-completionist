@@ -5,26 +5,28 @@
 function string_of_theme(th) {
   switch (th) {
     case 0 : 
-        return "is-white";
+        return "";
     case 1 : 
-        return "is-light";
+        return "is-white";
     case 2 : 
-        return "is-dark";
+        return "is-light";
     case 3 : 
-        return "is-black";
+        return "is-dark";
     case 4 : 
-        return "is-text";
+        return "is-black";
     case 5 : 
-        return "is-primary";
+        return "is-text";
     case 6 : 
-        return "is-link";
+        return "is-primary";
     case 7 : 
-        return "is-info";
+        return "is-link";
     case 8 : 
-        return "is-success";
+        return "is-info";
     case 9 : 
-        return "is-warning";
+        return "is-success";
     case 10 : 
+        return "is-warning";
+    case 11 : 
         return "is-danger";
     
   }

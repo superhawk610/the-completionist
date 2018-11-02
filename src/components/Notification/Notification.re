@@ -6,10 +6,8 @@ let component = __MODULE__ |> ReasonReact.statelessComponent;
 let make = (~active, ~heading=?, ~message, ~theme=Bulma.Primary, _children) => {
   ...component,
   render: _self => {
-    Js.log(theme);
     let theme = Bulma.string_of_theme(theme);
     let style = ReactDOMRe.Style.make(~opacity=active ? "1" : "0", ());
-    Js.log(active ? "is_active" : "isnt_active");
     switch (heading) {
     | Some(text) =>
       <div

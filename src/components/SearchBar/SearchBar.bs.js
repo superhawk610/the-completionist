@@ -2,14 +2,12 @@
 'use strict';
 
 var React = require("react");
-var ReactDOMRe = require("reason-react/src/ReactDOMRe.js");
-var Belt_Option = require("bs-platform/lib/js/belt_Option.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
-var Subheading$ReactTemplate = require("../Heading/Subheading.bs.js");
+var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 
-var component = ReasonReact.statelessComponent("Box-ReactTemplate");
+var component = ReasonReact.statelessComponent("SearchBar-ReactTemplate");
 
-function make(heading, children) {
+function make(value, onChange, placeholder, _children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -21,11 +19,15 @@ function make(heading, children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (_self) {
-              return React.createElement("div", {
-                          className: "box"
-                        }, Belt_Option.getWithDefault(Belt_Option.map(heading, (function (text) {
-                                    return ReasonReact.element(undefined, undefined, Subheading$ReactTemplate.make(/* array */[text]));
-                                  })), null), ReactDOMRe.createElementVariadic("div", undefined, children));
+              var tmp = {
+                className: "input",
+                value: value,
+                onChange: onChange
+              };
+              if (placeholder !== undefined) {
+                tmp.placeholder = Js_primitive.valFromOption(placeholder);
+              }
+              return React.createElement("input", tmp);
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],
